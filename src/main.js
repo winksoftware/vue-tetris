@@ -32,8 +32,8 @@ const store = new Vuex.Store({
 new Vue({
     store,
     render: h => h(App),
-    mounted() {
-        window.addEventListener('keyup', (event) => {
+    methods: {
+        onKeyUp(event) {
             switch (event.key) {
                 case 'ArrowDown':
                     store.commit('setArrowDownKeyPressed', false);
@@ -48,9 +48,8 @@ new Vue({
                     store.commit('setArrowRightKeyPressed', false);
                     break;
             }
-        });
-
-        window.addEventListener('keydown', (event) => {
+        },
+        onKeyDown(event) {
             switch (event.key) {
                 case 'ArrowDown':
                     store.commit('setArrowDownKeyPressed', true);
@@ -65,6 +64,14 @@ new Vue({
                     store.commit('setArrowRightKeyPressed', true);
                     break;
             }
-        });
+        }
+    },
+    mounted() {
+        window.addEventListener('keyup', this.onKeyUp);
+        window.addEventListener('keydown', this.onKeyDown);
+    },
+    destroyed() {
+        window.removeEventListener('keyup', this.onKeyUp);
+        window.removeEventListener('keydown', this.onKeyDown);
     }
 }).$mount('#app')
