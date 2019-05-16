@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row" v-for="i in rows" :key="i">
-            <EmptyBlock v-for="j in columns" :key="j" />
+            <EmptyBlock v-for="j in columns" :key="i+''+j" />
         </div>
     </div>
 </template>
