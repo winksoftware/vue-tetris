@@ -2,15 +2,18 @@
     <div id="app">
         <p>Super tetris in VueJS</p>
         <Board/>
+        <Joystick/>
     </div>
 </template>
 
 <script>
     import Board from "./components/Elements/Board";
+    import Joystick from "./components/Console/Joystick";
 
     export default {
         name: 'app',
         components: {
+            Joystick,
             Board
         }
     }
