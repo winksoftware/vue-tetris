@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <p>Super tetris in VueJS</p>
         <Board/>
     </div>
 </template>
