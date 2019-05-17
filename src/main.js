@@ -7,10 +7,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        isArrowDownKeyPressed: false,
-        isArrowUpKeyPressed: false,
-        isArrowLeftKeyPressed: false,
-        isArrowRightKeyPressed: false,
+        isArrowDownKeyPressed: 0,
+        isArrowUpKeyPressed: 0,
+        isArrowLeftKeyPressed: 0,
+        isArrowRightKeyPressed: 0,
         currentPosition: {
             x: 1,
             y: 1
@@ -49,35 +49,35 @@ new Vue({
     store,
     render: h => h(App),
     methods: {
-        onKeyUp(event) {
-            switch (event.key) {
-                case 'ArrowDown':
-                    store.commit('setArrowDownKeyPressed', false);
-                    break;
-                case 'ArrowUp':
-                    store.commit('setArrowUpKeyPressed', false);
-                    break;
-                case 'ArrowLeft':
-                    store.commit('setArrowLeftKeyPressed', false);
-                    break;
-                case 'ArrowRight':
-                    store.commit('setArrowRightKeyPressed', false);
-                    break;
-            }
-        },
         onKeyDown(event) {
             switch (event.key) {
                 case 'ArrowDown':
-                    store.commit('setArrowDownKeyPressed', true);
+                    store.commit('setArrowDownKeyPressed', store.state.isArrowDownKeyPressed + 1);
                     break;
                 case 'ArrowUp':
-                    store.commit('setArrowUpKeyPressed', true);
+                    store.commit('setArrowUpKeyPressed', store.state.isArrowUpKeyPressed + 1);
                     break;
                 case 'ArrowLeft':
-                    store.commit('setArrowLeftKeyPressed', true);
+                    store.commit('setArrowLeftKeyPressed', store.state.isArrowLeftKeyPressed + 1);
                     break;
                 case 'ArrowRight':
-                    store.commit('setArrowRightKeyPressed', true);
+                    store.commit('setArrowRightKeyPressed', store.state.isArrowRightKeyPressed + 1);
+                    break;
+            }
+        },
+        onKeyUp(event) {
+            switch (event.key) {
+                case 'ArrowDown':
+                    store.commit('setArrowDownKeyPressed', 0);
+                    break;
+                case 'ArrowUp':
+                    store.commit('setArrowUpKeyPressed', 0);
+                    break;
+                case 'ArrowLeft':
+                    store.commit('setArrowLeftKeyPressed', 0);
+                    break;
+                case 'ArrowRight':
+                    store.commit('setArrowRightKeyPressed', 0);
                     break;
             }
         }
