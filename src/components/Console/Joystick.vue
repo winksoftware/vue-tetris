@@ -9,7 +9,33 @@
 
 <script>
     export default {
-        name: "Joystick"
+        name: "Joystick",
+        mounted() {
+            let self = this;
+            this.$store.watch(function (state) {
+                return state.isArrowRightKeyPressed;
+            }, function () {
+                self.$store.commit('moveRight')
+            });
+
+            this.$store.watch(function (state) {
+                return state.isArrowLeftKeyPressed;
+            }, function () {
+                self.$store.commit('moveLeft')
+            });
+
+            this.$store.watch(function (state) {
+                return state.isArrowDownKeyPressed;
+            }, function () {
+                self.$store.commit('moveDown')
+            });
+
+            this.$store.watch(function (state) {
+                return state.isArrowUpKeyPressed;
+            }, function () {
+                self.$store.commit('moveUp')
+            });
+        }
     }
 </script>
 

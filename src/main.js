@@ -10,7 +10,11 @@ const store = new Vuex.Store({
         isArrowDownKeyPressed: false,
         isArrowUpKeyPressed: false,
         isArrowLeftKeyPressed: false,
-        isArrowRightKeyPressed: false
+        isArrowRightKeyPressed: false,
+        currentPosition: {
+            x: 1,
+            y: 1
+        }
     },
     mutations: {
         setArrowDownKeyPressed(state, value) {
@@ -24,6 +28,18 @@ const store = new Vuex.Store({
         },
         setArrowRightKeyPressed(state, value) {
             state.isArrowRightKeyPressed = value;
+        },
+        moveRight(state) {
+            state.currentPosition.y++;
+        },
+        moveLeft(state) {
+            state.currentPosition.y--;
+        },
+        moveUp(state) {
+            state.currentPosition.x--
+        },
+        moveDown(state) {
+            state.currentPosition.x++;
         }
     }
 });

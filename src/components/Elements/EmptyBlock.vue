@@ -1,15 +1,22 @@
 <template>
-    <img v-bind:src="image">
+    <img v-bind:src="imageSource">
 </template>
 
 <script>
-    import imageBlock from '../../assets/empty-block.png'
+    import imageEmptyBlock from '../../assets/empty-block.png'
+    import imageBlock from '../../assets/block.png'
 
     export default {
         name: "EmptyBlock",
-        data: () => {
-            return {
-                image: imageBlock
+        props: {
+            isEmpty: {
+                default: true,
+                type: Boolean
+            }
+        },
+        computed: {
+            imageSource(){
+                return this.isEmpty ? imageEmptyBlock : imageBlock
             }
         }
     }
