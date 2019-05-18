@@ -9,36 +9,10 @@ new Vue({
     render: h => h(App),
     methods: {
         onKeyDown(event) {
-            switch (event.key) {
-                case 'ArrowDown':
-                    store.commit('joystick/setArrowDownKeyPressed', store.state.joystick.isArrowDownKeyPressed + 1);
-                    break;
-                case 'ArrowUp':
-                    store.commit('joystick/setArrowUpKeyPressed', store.state.joystick.isArrowUpKeyPressed + 1);
-                    break;
-                case 'ArrowLeft':
-                    store.commit('joystick/setArrowLeftKeyPressed', store.state.joystick.isArrowLeftKeyPressed + 1);
-                    break;
-                case 'ArrowRight':
-                    store.commit('joystick/setArrowRightKeyPressed', store.state.joystick.isArrowRightKeyPressed + 1);
-                    break;
-            }
+            store.dispatch('joystick/onKeyDown', event);
         },
         onKeyUp(event) {
-            switch (event.key) {
-                case 'ArrowDown':
-                    store.commit('joystick/setArrowDownKeyPressed', 0);
-                    break;
-                case 'ArrowUp':
-                    store.commit('joystick/setArrowUpKeyPressed', 0);
-                    break;
-                case 'ArrowLeft':
-                    store.commit('joystick/setArrowLeftKeyPressed', 0);
-                    break;
-                case 'ArrowRight':
-                    store.commit('joystick/setArrowRightKeyPressed', 0);
-                    break;
-            }
+            store.dispatch('joystick/onKeyUp', event);
         }
     },
     mounted() {
