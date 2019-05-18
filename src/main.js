@@ -14,6 +14,10 @@ const store = new Vuex.Store({
         currentPosition: {
             x: 1,
             y: 1
+        },
+        boardSize: {
+            rows: 20,
+            columns: 10
         }
     },
     mutations: {

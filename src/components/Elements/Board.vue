@@ -11,10 +11,10 @@
     export default {
         name: "Board",
         components: {EmptyBlock},
-        data: () => {
+        data() {
             return {
-                rows: 20,
-                columns: 10
+                rows: this.$store.state.boardSize.rows,
+                columns: this.$store.state.boardSize.columns
             }
         }
     }
