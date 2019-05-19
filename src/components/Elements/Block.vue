@@ -7,23 +7,23 @@
     import imageBlock from '../../assets/block.png'
 
     export default {
-        name: "EmptyBlock",
+        name: "Block",
         props: {
-            isEmpty: {
-                default: true,
+            isFull: {
+                default: false,
                 type: Boolean
             }
         },
         computed: {
-            imageSource(){
-                return this.isEmpty ? imageEmptyBlock : imageBlock
+            imageSource() {
+                return this.isFull ? imageBlock : imageEmptyBlock;
             }
         }
     }
 </script>
 
 <style scoped>
-img{
-    width: 15px;
-}
+    img {
+        width: 15px;
+    }
 </style>

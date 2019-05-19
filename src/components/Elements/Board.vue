@@ -1,27 +1,29 @@
 <template>
     <div>
-        <div class="row" v-for="i in rows" :key="i">
-            <EmptyBlock v-for="j in columns" v-bind:is-empty="!(i === $store.state.position.currentPosition.x && j === $store.state.position.currentPosition.y)" :key="i+''+j"></EmptyBlock>
+        <div class="row" v-for="(i, iIndex) in board.rows" :key="i">
+            <Block v-for="(j, jIndex) in board.columns" :is-full="board.isCurrentPositionFull(iIndex, jIndex)"
+                   :key="iIndex+''+jIndex"></Block>
         </div>
     </div>
 </template>
 
 <script>
-    import EmptyBlock from "./EmptyBlock";
+    import Block from "./Block";
+    import BoardLogic from '../../lib/console/board'
+
     export default {
         name: "Board",
-        components: {EmptyBlock},
-        data() {
-            return {
-                rows: this.$store.state.board.boardSize.rows,
-                columns: this.$store.state.board.boardSize.columns
+        components: {Block},
+        props: {
+            board: {
+                type: BoardLogic
             }
         }
     }
 </script>
 
 <style scoped>
-div.row{
-    margin-bottom: -4px;
-}
+    div.row {
+        margin-bottom: -4px;
+    }
 </style>
